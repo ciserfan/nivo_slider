@@ -25,6 +25,13 @@ OR
 //= require jquery.nivo.slider.pack
 ```
 
+Add the following line to your application.css file.
+
+```css
+  *= require nivo-slider
+  *= require nivo_default
+```
+
 
 **In Rails 3.0** add the generated nivo_slider file to your layout.
 
