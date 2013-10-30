@@ -1,45 +1,66 @@
-slim_scroll is a small jQuery plugin gem that transforms any div into a scrollable area with a nice scrollbar - similar to the one Facebook and Google started using in their products recently. slim_scroll doesn't occupy any visual space as it only appears on a user initiated mouse-over. User can drag the scrollbar or use mouse-wheel to change the scroll value..
+#nivo_slider
+
+nivo_slider gem is most beautiful and easy to use image slider on the market. There is literally no better way to make your website look totally stunning. There is literally no better way to make your website look totally stunning. 
 
 ## Setup
 
 Add the gem to your Gemfile and run the `bundle` command to install it.
 
 ```ruby
-gem "slim_scroll"
+gem "nivo_slider"
 ```
 
 Run the generator to create the initial files.
 
 ```
-rails g slim_scroll:install
+rails g nivo_slider:install
 ```
 **In Rails 3.1** add the JavaScript file to your application.js file manifest. 
 
 ```javascript
-//= require slim_scroll
+//= require jquery.nivo.slider
+```
+OR
+```javascript
+//= require jquery.nivo.slider.pack
 ```
 
 
-**In Rails 3.0** add the generated slim_scroll file to your layout.
+**In Rails 3.0** add the generated nivo_slider file to your layout.
 
 ```rhtml
-<%= javascript_include_tag "slim_scroll" %>
+<%= javascript_include_tag "nivo_slider" %>
+```
 
 ## Usage
-Slim scroll provide various option to for user 
-```rhtml
-<%= subscribe_to "/messages/new" %>
-```
-Use the `publish_to` helper method to send JavaScript to that channel. This is usually done in a JavaScript AJAX template (such as a create.js.erb file).
 
+Add the below code in your view wherever you want the scroll:
 ```rhtml
-<% publish_to "/messages/new" do %>
-  $("#chat").append("<%= j render(@messages) %>");
-<% end %>
+<div id="slider" class="nivoSlider">
+    <img src="images/toystory.jpg" data-thumb="images/toystory.jpg" alt="" />
+    <a href="http://dev7studios.com"><img src="images/up.jpg" data-thumb="images/up.jpg" alt="" title="This is an example of a caption" /></a>
+    <img src="images/walle.jpg" data-thumb="images/walle.jpg" alt="" data-transition="slideInLeft" />
+    <img src="images/nemo.jpg" data-thumb="images/nemo.jpg" alt="" title="#htmlcaption" />
+</div>
+<div id="htmlcaption" class="nivo-html-caption">
+    <strong>This</strong> is an example of a <em>HTML</em> caption with <a href="#">a link</a>. 
+</div>
+```
+Add the javascript code:
+
+```Javascript
+    $(window).load(function() {
+        $('#slider').nivoSlider();
+    });
 ```
 
-This JavaScript will be immediately evaluated on all clients who have subscribed to that channel. In this example they will see the new chat message appear in real-time without reloading the browser.
 
 ## Development & Feedback
 
-Questions or comments? Please use the [issue tracker](https://github.com/ciserfan/slim_scroll/issues). Tests can be run with `bundle` and `rake` commands.
+Questions or comments? Please use the [issue tracker](https://github.com/ciserfan/nivo_slider/issues). Tests can be run with `bundle` and `rake` commands.
+
+## Reference Site
+
+For more information you can refer to following site:
+
+<a href="http://dev7studios.com/plugins/nivo-slider/">nivo-slider</a>
