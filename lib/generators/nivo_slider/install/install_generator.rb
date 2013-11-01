@@ -26,11 +26,12 @@ else
       class InstallGenerator < ::Rails::Generators::Base
         desc "This generator add nivo slider  to application.js or application.js.coffee"
         source_root File.expand_path('../../../../../vendor/assets/', __FILE__)
-       
+      
         def add_assets
-         copy_file "images/arrows.png", "app/assets/images/arrows.png"
+        copy_file "images/arrows.png", "app/assets/images/arrows.png"
         copy_file "images/bullets.png", "app/assets/images/bullets.png"
-        copy_file "images/loading.gif", "app/assets/images/loading.gif"  
+        copy_file "images/loading.gif", "app/assets/images/loading.gif"
+        def add_assets
         js_manifest = 'app/assets/javascripts/application.js'
         if File.exist?(js_manifest)
           insert_into_file js_manifest, "//= require jquery.nivo.slider\n", :after => "jquery_ujs\n"
