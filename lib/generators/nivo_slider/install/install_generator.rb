@@ -26,6 +26,9 @@ else
       class InstallGenerator < ::Rails::Generators::Base
         desc "This generator add nivo slider  to application.js or application.js.coffee"
         source_root File.expand_path('../../../../../vendor/assets/', __FILE__)
+        copy_file "images/arrows.png", "app/assets/images/arrows.png"
+        copy_file "images/bullets.png", "app/assets/images/bullets.png"
+        copy_file "images/loading.gif", "app/assets/images/loading.gif"
         def add_assets
         js_manifest = 'app/assets/javascripts/application.js'
         if File.exist?(js_manifest)
@@ -37,12 +40,9 @@ else
         if File.exist?(css_manifest)
           # Add our own require:
           content = File.read(css_manifest)
-          if content.match(/require_tree\s+\.\s*$/)
-            # Good enough - that'll include our bootstrap_and_overrides.css.less
-          else
-            insert_into_file css_manifest, " *= require nivo_default\n", :after => "require_self\n"
-            insert_into_file css_manifest, " *= require nivo-slider\n", :after => "require_self\n"
-          end
+          insert_into_file css_manifest, " *= require nivo_default\n", :after => "require_self\n"
+          insert_into_file css_manifest, " *= require nivo-slider\n", :after => "require_self\n"
+         
         else
           copy_file "application.css", "app/assets/stylesheets/application.css"
         end
